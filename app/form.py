@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm  # 从flask_wtf包中导入FlaskForm类
-from wtforms import StringField, PasswordField, BooleanField, SubmitField  # 导入这些类
-from wtforms.validators import DataRequired
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField  # 导入这些类
+from wtforms.validators import DataRequired, Length
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
@@ -31,3 +31,9 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+
+class EditProfileForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    about_me = TextAreaField('About_me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Submit')

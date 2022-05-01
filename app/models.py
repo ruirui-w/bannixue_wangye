@@ -3,6 +3,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import current_user, login_user
 from flask_login import UserMixin
+from hashlib import md5
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -12,7 +13,8 @@ class User(UserMixin, db.Model):#混入类，多继承
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
@@ -21,7 +23,10 @@ class User(UserMixin, db.Model):#混入类，多继承
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.cnblogs.com/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM'.format(
+            digest, size)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

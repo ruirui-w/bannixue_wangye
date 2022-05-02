@@ -1,6 +1,7 @@
 from flask import Flask
 from config import Config#从config模块导入Config类
-
+from logging.handlers import RotatingFileHandler
+import os
 from flask_sqlalchemy import SQLAlchemy#从包中导入类
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -12,4 +13,4 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)#数据库对象
 migrate = Migrate(app, db)#迁移引擎对象
 
-from app import routes,models#导入一个新模块models，它将定义数据库的结构，目前为止尚未编写
+from app import routes,models,errors#导入一个新模块models，它将定义数据库的结构，目前为止尚未编写

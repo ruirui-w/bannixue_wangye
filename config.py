@@ -15,6 +15,8 @@ class Config:
     ADMINS = ['ruirui__ww@163.com']
     POSTS_PER_PAGE = 3
 
+    LANGUAGES = ['en', 'zh']
+
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS')

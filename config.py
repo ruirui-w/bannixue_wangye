@@ -19,5 +19,5 @@ class Config:
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS')
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'false').lower() in ['true', 'on', '1']
-    MAIL_USERNAME = 'ruirui__ww@163.com'
-    MAIL_PASSWORD = 'KPLYKRTGJLJGIWKQ'  # 客户端授权密码
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')  # 客户端授权密码

@@ -32,7 +32,12 @@
 					<li><a href="{{ url_for('index') }}">主页</a></li>
 					<li><a href="{{ url_for('explore') }}">探索伴你学</a></li>
 				</ul>
-
+				<ul class="nav navbar-nav">
+					<li><a href="{{ url_for('kaishi') }}">现在开始学习</a></li>
+				</ul>
+<!--				<ul class="nav navbar-nav">-->
+<!--					<li><a href="{{ url_for('guanbi') }}">停止学习进程</a></li>-->
+<!--				</ul>-->
 				<ul class="nav navbar-nav navbar-right">
 					{% if current_user.is_anonymous %}
 						<li><a href="{{ url_for('login') }}">登入</a></li>

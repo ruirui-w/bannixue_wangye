@@ -18,8 +18,6 @@ login.login_message = _l('请登录以浏览')
 mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app)
-
-
 db = SQLAlchemy(app)#数据库对象
 migrate = Migrate(app, db)#迁移引擎对象
 

@@ -51,7 +51,7 @@ def avg_eyeq():
     avg = 0
     for i in eyeq:
         avg = avg + i
-    avg = avg / len(eyeq)
+    avg = avg / (len(eyeq)+1)
 
     return avg
 
